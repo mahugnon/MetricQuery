@@ -43,12 +43,6 @@ SpecDemoFormPresenter class >> defaultSpec [
 		yourself
 ]
 
-{ #category : #specs }
-SpecDemoFormPresenter class >> runMe [
-	<example>
-	self new openWithSpec
-]
-
 { #category : #accessing }
 SpecDemoFormPresenter >> form [
 	^ form
