@@ -3,7 +3,8 @@ Class {
 	#superclass : #ComposablePresenter,
 	#instVars : [
 		'menu',
-		'resultTable'
+		'resultTable',
+		'modelPresenter'
 	],
 	#category : #'MetricQuery-Presenter'
 }
@@ -11,8 +12,11 @@ Class {
 { #category : #specs }
 MQMainPresenter class >> defaultSpec [
 	^ SpecColumnLayout composed
-		add: #menu;
-		add: #resultTable;
+		newRow: [ :r | r add: #menu ] height: 120;
+		newRow: [ :r | 
+			r
+				add: #modelPresenter;
+				add: #resultTable ];
 		yourself
 ]
 
@@ -27,6 +31,11 @@ MQMainPresenter >> initMenu [
 	menu := self instantiate: MQMenu
 ]
 
+{ #category : #initialization }
+MQMainPresenter >> initModelPresenter [
+	modelPresenter := self instantiate: MQModelPresenter
+]
+
 { #category : #'initialization - private' }
 MQMainPresenter >> initResultTable [
 	resultTable := self instantiate: MQResultPresenter
@@ -35,12 +44,18 @@ MQMainPresenter >> initResultTable [
 { #category : #initialization }
 MQMainPresenter >> initializeWidgets [
 	self initMenu.
-	self initResultTable
+	self initResultTable.
+	self initModelPresenter
 ]
 
 { #category : #accessing }
 MQMainPresenter >> menu [
 	^ menu
+]
+
+{ #category : #initialization }
+MQMainPresenter >> modelPresenter [
+	^ modelPresenter
 ]
 
 { #category : #accessing }

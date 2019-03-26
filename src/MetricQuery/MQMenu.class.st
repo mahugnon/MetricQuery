@@ -36,6 +36,11 @@ MQMenu class >> runMe [
 	^ self new openWithSpec
 ]
 
+{ #category : #api }
+MQMenu >> extent [
+	^ 500 @ 200
+]
+
 { #category : #initialization }
 MQMenu >> initializeWidgets [
 	queryType := self newDropList.
