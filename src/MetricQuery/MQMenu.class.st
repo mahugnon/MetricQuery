@@ -1,6 +1,6 @@
 Class {
 	#name : #MQMenu,
-	#superclass : #ComposablePresenter,
+	#superclass : #MQAbstractPresenter,
 	#instVars : [
 		'queryType',
 		'queryPatternLabel',

@@ -1,6 +1,6 @@
 Class {
 	#name : #MQResultPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #MQAbstractPresenter,
 	#instVars : [
 		'table',
 		'name'
@@ -34,6 +34,7 @@ MQResultPresenter >> initName [
 MQResultPresenter >> initTable [
 | queryCol queryResultCol |
 table:=self newTree .
+table roots: context queryResults.
 table rootNodeHolder: [ :item|
 	TreeNodePresenter new 
 	content: item ].

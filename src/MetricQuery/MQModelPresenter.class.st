@@ -1,6 +1,6 @@
 Class {
 	#name : #MQModelPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #MQAbstractPresenter,
 	#instVars : [
 		'modelPresenter',
 		'name'
@@ -16,10 +16,20 @@ MQModelPresenter class >> defaultSpec [
 		yourself
 ]
 
+{ #category : #accessing }
+MQModelPresenter >> context: aContext [
+	super context: aContext.
+	self refresh
+]
+
+{ #category : #initialization }
+MQModelPresenter >> focus: item [
+	^ self context focus: item
+]
+
 { #category : #initialization }
 MQModelPresenter >> initModelPresenter [
-	modelPresenter := self instantiate: FastTablePresenter.
-	modelPresenter handlesDoubleClick: true
+	modelPresenter := self instantiate: FastTablePresenter
 ]
 
 { #category : #initialization }
@@ -27,6 +37,11 @@ MQModelPresenter >> initName [
 name:=self newLabel .
 name label: 'Current Model';
 emphasis: #bold.
+]
+
+{ #category : #initialization }
+MQModelPresenter >> initializePresenter [
+	modelPresenter whenSelectedItemChanged: [ :item | self focus: item ]
 ]
 
 { #category : #initialization }
@@ -43,4 +58,9 @@ MQModelPresenter >> modelPresenter [
 { #category : #accessing }
 MQModelPresenter >> name [
 	^ name
+]
+
+{ #category : #refreshing }
+MQModelPresenter >> refresh [
+	modelPresenter items: context model
 ]

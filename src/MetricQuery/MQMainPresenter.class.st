@@ -1,6 +1,6 @@
 Class {
 	#name : #MQMainPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #MQAbstractPresenter,
 	#instVars : [
 		'menu',
 		'resultTable',
@@ -26,6 +26,15 @@ MQMainPresenter class >> runMe [
 	self new openWithSpec
 ]
 
+{ #category : #accessing }
+MQMainPresenter >> context: aContext [
+	aContext model: MooseModel root first cacheMooseGroups entityCache.
+	super context: aContext.
+	modelPresenter context: aContext.
+	menu context: aContext.
+	resultTable context: aContext
+]
+
 { #category : #'initialization - private' }
 MQMainPresenter >> initMenu [
 	menu := self instantiate: MQMenu
@@ -45,7 +54,8 @@ MQMainPresenter >> initResultTable [
 MQMainPresenter >> initializeWidgets [
 	self initMenu.
 	self initResultTable.
-	self initModelPresenter
+	self initModelPresenter.
+	self context: MQContext new
 ]
 
 { #category : #accessing }
