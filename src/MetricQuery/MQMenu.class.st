@@ -46,7 +46,7 @@ MQMenu >> initializeWidgets [
 	queryType := self newDropList.
 	queryPatternLabel := self newLabel.
 	queryPatternLabel
-		label: 'Query:';
+		label: 'Query Pattern:';
 		emphasis: #bold.
 	querPatten := self newButton.
 	querPatten color: Color white.
