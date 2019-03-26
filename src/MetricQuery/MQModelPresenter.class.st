@@ -29,7 +29,11 @@ MQModelPresenter >> focus: item [
 
 { #category : #initialization }
 MQModelPresenter >> initModelPresenter [
-	modelPresenter := self instantiate: FastTablePresenter
+	modelPresenter := self instantiate: FastTablePresenter.
+	modelPresenter
+		displayBlock: [ :item | item key asString , ' - ' , item value asString ];
+		icons: [ :item | item value mooseIcon ];
+		sortingBlock: [ :a :b | a key asString < b key asString ]
 ]
 
 { #category : #initialization }

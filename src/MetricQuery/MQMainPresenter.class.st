@@ -28,7 +28,8 @@ MQMainPresenter class >> runMe [
 
 { #category : #accessing }
 MQMainPresenter >> context: aContext [
-	aContext model: MooseModel root first cacheMooseGroups entityCache.
+	aContext
+		model: MooseModel root first cacheMooseGroups entityCache associations.
 	super context: aContext.
 	modelPresenter context: aContext.
 	menu context: aContext.
