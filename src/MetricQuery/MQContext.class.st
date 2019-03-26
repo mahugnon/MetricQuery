@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'model',
 		'focus',
-		'queryResults'
+		'queryResults',
+		'resultPresenter',
+		'query'
 	],
 	#category : #'MetricQuery-Context'
 }
@@ -36,6 +38,17 @@ MQContext >> model: anObject [
 ]
 
 { #category : #accessing }
+MQContext >> queryResult: aResult [
+	queryResults add: aResult.
+	resultPresenter refresh
+]
+
+{ #category : #accessing }
 MQContext >> queryResults [
 	^ queryResults
+]
+
+{ #category : #accessing }
+MQContext >> resultPresenter: aComposablePresenter [
+	resultPresenter := aComposablePresenter
 ]

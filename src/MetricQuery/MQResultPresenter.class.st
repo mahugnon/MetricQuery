@@ -22,6 +22,12 @@ MQResultPresenter class >> runMe [
 	self new openWithSpec
 ]
 
+{ #category : #accessing }
+MQResultPresenter >> context: aContext [
+	super context: aContext.
+	context resultPresenter: self
+]
+
 { #category : #initialization }
 MQResultPresenter >> initName [
 	name := self newLabel.
@@ -34,7 +40,7 @@ MQResultPresenter >> initName [
 MQResultPresenter >> initTable [
 | queryCol queryResultCol |
 table:=self newTree .
-table roots: context queryResults.
+table roots: self context queryResults.
 table rootNodeHolder: [ :item|
 	TreeNodePresenter new 
 	content: item ].
@@ -78,6 +84,11 @@ MQResultPresenter >> justeSaveTheExampleCode [
 { #category : #initialization }
 MQResultPresenter >> name [
 	^ name
+]
+
+{ #category : #refreshing }
+MQResultPresenter >> refresh [
+	self initTable
 ]
 
 { #category : #accessing }

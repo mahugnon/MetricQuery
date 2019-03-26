@@ -72,3 +72,8 @@ MQMainPresenter >> modelPresenter [
 MQMainPresenter >> resultTable [
 	^ resultTable
 ]
+
+{ #category : #api }
+MQMainPresenter >> title [ 
+^'Query Metric'
+]
